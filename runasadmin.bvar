@@ -1,0 +1,9 @@
+:ExecuteAsAdmin
+@echo off
+NET SESSION >nul 2>&1
+if %errorlevel% == 0 (
+    call %*
+) else (
+    powershell -Command "Start-Process cmd -ArgumentList '/c %0 %*' -Verb runAs"
+)
+goto end
