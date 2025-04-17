@@ -1,0 +1,24 @@
+@echo off
+
+
+if "%1"=="" (
+    echo Fehler: Kein erstes Argument angegeben.
+    goto err
+)
+
+
+if "%2"=="" (
+    echo Fehler: Kein zweites Argument angegeben.
+    goto err
+)
+
+
+powershell -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('%2', '%1')"
+
+goto end
+
+:err
+echo Es gab einen Fehler. Beende das Skript.
+goto end
+
+:end
